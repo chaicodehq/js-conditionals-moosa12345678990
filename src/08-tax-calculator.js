@@ -27,4 +27,26 @@
  */
 export function calculateTax(income) {
   // Your code here
+   // If income is 0 or negative
+  if (income <= 0) {
+    return 0;
+  }
+
+  let tax = 0;
+
+  if (income <= 10000) {
+    // No tax
+    tax = 0;
+  } else if (income <= 30000) {
+    // 10% on amount above $10,000
+    tax = (income - 10000) * 0.10;
+  } else if (income <= 70000) {
+    // First bracket tax ($2,000) + 20% on amount above $30,000
+    tax = 2000 + (income - 30000) * 0.20;
+  } else {
+    // First two brackets ($2,000 + $8,000) + 30% on amount above $70,000
+    tax = 2000 + 8000 + (income - 70000) * 0.30;
+  }
+
+  return tax;
 }
